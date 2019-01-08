@@ -34,7 +34,7 @@ class LicenseManager extends BaseManager
     public function addLicense($userId, AssignedLicense $license)
     {
         $data = ["removeLicenses" => []];
-
+        // test
         $data['addLicenses'][] = [
             'disabledPlans' => $license->getDisabledPlans(),
             'skuId' => $license->getSkuId()
