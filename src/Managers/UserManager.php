@@ -9,6 +9,7 @@ namespace O365Graph\Managers;
 
 
 use O365Graph\Entities\User;
+use O365Graph\Entities\AssignedLicense;
 
 class UserManager extends BaseManager
 {
@@ -41,7 +42,9 @@ class UserManager extends BaseManager
 
         if ($requestManager->getStatusCode() == 200 || $requestManager->getStatusCode() == 201) {
             $licenseManager = new LicenseManager($this->keys);
-            $licenseManager->addLicense($userEntity->getUserPrincipalName(), $userEntity->getAssignedLicenses());
+            foreach ($userEntity->getAssignedLicenses() as $assignedLicense) {
+                $licenseManager->addLicense($userEntity->getUserPrincipalName(), $assignedLicense);
+            }
         }
 
         return json_decode($requestManager->getHttpResponse(), true);

@@ -31,16 +31,14 @@ class LicenseManager extends BaseManager
      * @param $userId
      * @return mixed
      */
-    public function addLicense($userId, array $licenses)
+    public function addLicense($userId, AssignedLicense $license)
     {
         $data = ["removeLicenses" => []];
 
-        foreach ($licenses as $license) {
-            $data['addLicenses'][] = [
-                'disabledPlans' => $license->getDisabledPlans(),
-                'skuId' => $license->getSkuId()
-            ];
-        }
+        $data['addLicenses'][] = [
+            'disabledPlans' => $license->getDisabledPlans(),
+            'skuId' => $license->getSkuId()
+        ];
 
         $requestManager = new RequestManager($this->getResource($userId), json_encode($data), 'POST', $this->getHeader());
         $requestManager->send();
@@ -51,16 +49,12 @@ class LicenseManager extends BaseManager
 
     /**
      * @param $userId
-     * @param $licenses AssignedLicense[]
+     * @param AssignedLicense $license
      * @return mixed
      */
-    public function removeLicense($userId, array $licenses)
+    public function removeLicense($userId, AssignedLicense $license)
     {
-        $data = ['addLicenses'=> [], 'removeLicenses' => []];
-
-        foreach ($licenses as $license) {
-            array_push($data['removeLicenses'], $license->getSkuId());
-        }
+        $data = ['addLicenses'=> [], 'removeLicenses' => $license->getSkuId];
 
         $requestManager = new RequestManager($this->getResource($userId), json_encode($data), 'POST', $this->getHeader());
         $requestManager->send();
