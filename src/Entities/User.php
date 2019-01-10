@@ -49,7 +49,10 @@ class User
         'birthday' => '',
         'jobTitle' => '',
         'department' => '',
-        'city' => ''
+        'city' => '',
+        'country' => '',
+        'streetAddress' => '',
+        'office' => ''
     ];
 
 
@@ -240,6 +243,55 @@ class User
     public function getJobTitle()
     {
         return $this->personalInformation['jobTitle'];
+    }
+
+    /**
+     * @param $title
+     */
+    public function setStreetAddress($title)
+    {
+        $this->personalInformation['streetAddress'] = $title;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getStreetAddress()
+    {
+        return $this->personalInformation['streetAddress'];
+    }
+
+    /**
+     * @param $title
+     */
+    public function setCountry($title)
+    {
+        $this->personalInformation['country'] = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->personalInformation['country'];
+    }
+
+    /**
+     * @param $title
+     */
+    public function setOffice($title)
+    {
+        $this->personalInformation['office'] = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOffice()
+    {
+        return $this->personalInformation['office'];
     }
 
     /**
