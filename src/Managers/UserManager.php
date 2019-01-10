@@ -137,7 +137,7 @@ class UserManager extends BaseManager
             'streetAddress' => $userEntity->getStreetAddress(),
             'department' => $userEntity->getDepartment(),
             'jobTitle' => $userEntity->getJobTitle(),
-            'office' => $userEntity->getOffice(),
+            'officeLocation' => $userEntity->getOfficeLocation(),
             //'preferredName' => $userEntity->getName(),
             'surname' => $userEntity->getSurname(),
             'givenName' => $userEntity->getName(),

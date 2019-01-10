@@ -52,7 +52,7 @@ class User
         'city' => '',
         'country' => '',
         'streetAddress' => '',
-        'office' => ''
+        'officeLocation' => ''
     ];
 
 
@@ -281,17 +281,17 @@ class User
     /**
      * @param $title
      */
-    public function setOffice($title)
+    public function setOfficeLocation($title)
     {
-        $this->personalInformation['office'] = $title;
+        $this->personalInformation['officeLocation'] = $title;
     }
 
     /**
      * @return string
      */
-    public function getOffice()
+    public function getOfficeLocation()
     {
-        return $this->personalInformation['office'];
+        return $this->personalInformation['officeLocation'];
     }
 
     /**
