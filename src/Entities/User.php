@@ -55,6 +55,7 @@ class User
         'officeLocation' => ''
     ];
 
+    // deneme
 
     /**
      * @var array(AssignedLicense)
