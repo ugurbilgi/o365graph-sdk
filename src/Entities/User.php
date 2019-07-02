@@ -52,7 +52,8 @@ class User
         'city' => '',
         'country' => '',
         'streetAddress' => '',
-        'officeLocation' => ''
+        'officeLocation' => '',
+        'state' => ''
     ];
 
     // deneme
@@ -293,6 +294,22 @@ class User
     public function getOfficeLocation()
     {
         return $this->personalInformation['officeLocation'];
+    }
+
+    /**
+     * @param $title
+     */
+    public function setState($title)
+    {
+        $this->personalInformation['state'] = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->personalInformation['state'];
     }
 
     /**
