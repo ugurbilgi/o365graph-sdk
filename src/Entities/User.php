@@ -54,7 +54,7 @@ class User
         'streetAddress' => '',
         'officeLocation' => '',
         'state' => '',
-        'CustomAttribute1' => ''
+        'postalCode' => ''
     ];
 
     // deneme
@@ -316,17 +316,17 @@ class User
     /**
      * @param $title
      */
-    public function setCustomAttribute1($title)
+    public function setPostalCode($title)
     {
-        $this->personalInformation['CustomAttribute1'] = $title;
+        $this->personalInformation['postalCode'] = $title;
     }
 
     /**
      * @return string
      */
-    public function getCustomAttribute1()
+    public function getPostalCode()
     {
-        return $this->personalInformation['CustomAttribute1'];
+        return $this->personalInformation['postalCode'];
     }
 
     /**
