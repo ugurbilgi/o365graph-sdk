@@ -53,7 +53,8 @@ class User
         'country' => '',
         'streetAddress' => '',
         'officeLocation' => '',
-        'state' => ''
+        'state' => '',
+        'CustomAttribute1' => ''
     ];
 
     // deneme
@@ -310,6 +311,22 @@ class User
     public function getState()
     {
         return $this->personalInformation['state'];
+    }
+
+    /**
+     * @param $title
+     */
+    public function setCustomAttribute1($title)
+    {
+        $this->personalInformation['CustomAttribute1'] = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomAttribute1()
+    {
+        return $this->personalInformation['CustomAttribute1'];
     }
 
     /**

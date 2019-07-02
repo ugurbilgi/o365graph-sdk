@@ -142,7 +142,8 @@ class UserManager extends BaseManager
             'surname' => $userEntity->getSurname(),
             'givenName' => $userEntity->getName(),
             'usageLocation' => $userEntity->getUsageLocation(),
-            'state' => $userEntity->getState()
+            'state' => $userEntity->getState(),
+            "CustomAttribute1" => $userEntity->getCustomAttribute1()
         ];
 
         if ($userEntity->getPasswordProfile()) {
