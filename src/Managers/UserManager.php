@@ -96,7 +96,7 @@ class UserManager extends BaseManager
     {
         $url = $this->getResource(). "/$id";
 
-        $requestManager = new RequestManager($url, json_encode($this->getUserInformation($userEntity)), 'PATCH', $this->getHeader());
+        $requestManager = new RequestManager($url, json_encode($this->getUserInformation($userEntity, false)), 'PATCH', $this->getHeader());
         $requestManager->send();
 
         return json_decode($requestManager->getHttpResponse(), true);
@@ -124,7 +124,7 @@ class UserManager extends BaseManager
      * @param User $userEntity
      * @return array
      */
-    private function getUserInformation(User $userEntity){
+    private function getUserInformation(User $userEntity, $createMail = true){
         $data = [
             'displayName' => $userEntity->getDisplayName(),
             'userPrincipalName' => $userEntity->getUserPrincipalName(),
@@ -146,11 +146,13 @@ class UserManager extends BaseManager
             'PostalCode' => $userEntity->getPostalCode()
         ];
 
-        if ($userEntity->getPasswordProfile()) {
-            $data['passwordProfile'] = [
-                'password' => (string)$userEntity->getPasswordProfile()->getPassword(),
-                'forceChangePasswordNextSignIn' => $userEntity->getPasswordProfile()->isChangeOnStart()
-            ];
+        if($createMail){
+            if ($userEntity->getPasswordProfile()) {
+                $data['passwordProfile'] = [
+                    'password' => (string)$userEntity->getPasswordProfile()->getPassword(),
+                    'forceChangePasswordNextSignIn' => $userEntity->getPasswordProfile()->isChangeOnStart()
+                ];
+            }
         }
 
         return array_filter($data, function($val){
